@@ -4,14 +4,14 @@
 Project: testProject
 Author: jc feng (jcfeng2013@gmail.com)
 File Created: 2019-05-31 10:13:40
-Last Modified: 2019-05-31 11:50:32
+Last Modified: 2019-05-31 12:12:46
 '''
 
 import unittest
 from main import add, minus, multi
 
 
-class TestAdd(unittest.TestCase):
+class TestMath(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -42,5 +42,22 @@ class TestAdd(unittest.TestCase):
         self.assertEqual(9, multi(1, 9))
 
 
-if __name__ == "__main__":
+def test_with_order():
+    suite = unittest.TestSuite()
+    tests = [
+        TestMath('test_add'),
+        TestMath('test_minus'),
+        TestMath('test_multi')
+    ]
+    suite.addTests(tests)
+    runner = unittest.TextTestRunner(verbosity=2)
+    runner.run(suite)
+
+
+def default_test():
     unittest.main(verbosity=2)
+
+
+if __name__ == "__main__":
+    default_test()
+    test_with_order()
