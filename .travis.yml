@@ -8,3 +8,4 @@ install:
 script:
   - pipenv run flake8 --ignore=E501
   - pipenv run python test_math_unittest.py
+  - pipenv run pytest test_math_pytest.py -v
